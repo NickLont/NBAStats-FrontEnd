@@ -17,16 +17,18 @@ class Homepage extends Component {
     // console.log("env is:", process.env)
     const { user, error, loading } = this.props
     return (
-      <div className="container homepage">
-        <h3 className="homepage__title">App Homepage</h3>
-        <p>user: {user ? user : 'No user'}</p>
-        <p>error: {error ?  error : 'No error'}</p>
-        <p>loading: {JSON.stringify(loading)}</p>
-        <TestComponent />
-        <>
-          <p>Test</p>
-        </>
-        <Button onClick={this.onClick}>Bootstrap Button</Button>
+      <div className="homepage">
+        <div className="container">
+          <h3 className="homepage__title">App Homepage</h3>
+          <p>user: {user ? user : 'No user'}</p>
+          <p>error: {error ?  error : 'No error'}</p>
+          <p>loading: {JSON.stringify(loading)}</p>
+          <TestComponent />
+          <>
+            <p>Test</p>
+          </>
+          <Button onClick={this.onClick}>Bootstrap Button</Button>
+        </div>
       </div>
     )
   }

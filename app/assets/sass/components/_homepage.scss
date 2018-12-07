@@ -1,4 +1,6 @@
 .homepage {
+  display: flex;
+  min-height: 100vh;
   &__title {
     color: $color-orange;
   }

@@ -3,11 +3,17 @@ import { Provider } from 'react-redux'
 import configureStore from './store'
 import ReactDOM from "react-dom"
 import "assets/sass/style.scss"
-import Homepage from "containers/pages/homepage"
+import { HomePage } from 'containers'
+import { Navbar } from "./containers"
 
 class App extends Component {
   render() {
-    return <Homepage />
+    return (
+      <>
+        <Navbar />
+        <HomePage />
+      </>
+    )
   }
 }
 const store = configureStore()
