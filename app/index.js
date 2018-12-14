@@ -4,7 +4,7 @@ import configureStore from './store'
 import ReactDOM from "react-dom"
 import "assets/sass/style.scss"
 import { Navbar } from 'containers'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Routes from './routes'
 
@@ -12,12 +12,12 @@ const store = configureStore()
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
     <>
         <Navbar />
         <Routes />
     </>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 )
 Root.propTypes = {
