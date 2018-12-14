@@ -3,9 +3,10 @@ import { Provider } from 'react-redux'
 import configureStore from './store'
 import ReactDOM from "react-dom"
 import "assets/sass/style.scss"
-import { HomePage, Navbar, LoginPage } from 'containers'
+import { Navbar } from 'containers'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Routes from './routes'
 
 const store = configureStore()
 
@@ -14,10 +15,7 @@ const Root = ({ store }) => (
     <BrowserRouter>
     <>
         <Navbar />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-        </Switch>
+        <Routes />
     </>
     </BrowserRouter>
   </Provider>

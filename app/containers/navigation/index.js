@@ -25,7 +25,15 @@ class Navbar extends Component {
               Item 2
             </NavLink>
           </li>
-          <li className="navbar__link">Item 3</li>
+          <li className="navbar__item">
+            <NavLink
+              to='/login'
+              className="navbar__link"
+              activeClassName="navbar__link--active"
+            >
+              Item 2
+            </NavLink>
+          </li>
         </ul>
       </nav>
     )
