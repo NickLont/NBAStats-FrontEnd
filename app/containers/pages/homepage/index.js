@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import Button from "react-bootstrap/lib/Button"
-import { TestComponent } from "components"
 import { connect } from 'react-redux'
 import { UserActions } from 'actions'
 import { PropTypes } from 'prop-types'
@@ -23,7 +22,6 @@ class Homepage extends Component {
           <p>user: {user ? user : 'No user'}</p>
           <p>error: {error ?  error : 'No error'}</p>
           <p>loading: {JSON.stringify(loading)}</p>
-          <TestComponent />
           <>
             <p>Test</p>
           </>

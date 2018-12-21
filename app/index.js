@@ -13,10 +13,10 @@ const store = configureStore()
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-    <>
+      <div className="main-wrapper">
         <Navbar />
         <Routes />
-    </>
+      </div>
     </HashRouter>
   </Provider>
 )

@@ -36,6 +36,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "dotenv-webpack": "^1.5.7",
     "html-loader": "^0.5.5",
     "immutable": "^4.0.0-rc.12",

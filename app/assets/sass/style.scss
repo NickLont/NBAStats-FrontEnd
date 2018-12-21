@@ -22,8 +22,13 @@
 /*
  * Components Styling
 */
-@import "components/homepage";
-@import "components/navbar";
+@import "containers/homepage";
+@import "containers/navbar";
+@import "containers/main";
+@import "containers/authentication-page";
+
+@import "components/input";
+@import "components/button";
 
 /*
  * Mixins

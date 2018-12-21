@@ -1,0 +1,21 @@
+.authentication-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 10rem;
+  &__container {
+    width: 40rem;
+    border: 0.1rem solid $color-grey;
+    border-radius: 1rem;
+
+    &--input {
+      padding: 0 2rem;
+    }
+  }
+  &__buttons {
+    margin-left: 0.05rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.1rem solid $color-grey;
+    padding: 0.5rem 0;
+  }
+}
