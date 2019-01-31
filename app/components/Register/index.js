@@ -23,7 +23,6 @@ class Register extends Component {
   render() {
     const { repeatPassword, password } = this.state
     const isDisabled = password.length < 3 || repeatPassword.length < 3 || repeatPassword !== password
-    console.log(isDisabled)
     return (
       <>
         <Input

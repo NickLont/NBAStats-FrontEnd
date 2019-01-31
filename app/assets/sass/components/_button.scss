@@ -1,3 +1,11 @@
 .c-button {
+  display: flex;
   margin: 2rem 0;
+
+  &--right {
+    margin-left: auto;
+  }
+  &--centered {
+    margin: 2rem auto;
+  }
 }

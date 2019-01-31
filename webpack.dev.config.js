@@ -66,7 +66,7 @@ const webpackDevConfig = {
         loaders: [
           "style-loader", // creates style nodes from JS strings
           "css-loader", // translates CSS into CommonJS
-          "postcss-loader", // uses plugins defined in postcss.config.js , most important is autoprefixer
+          "postcss-loader", // uses plugins defined in   , most important is autoprefixer
           "sass-loader" // compiles Sass to CSS
           // these loader arrays work bottom to top
         ]
