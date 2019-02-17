@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects"
 import { AuthenticationActions } from 'actions'
 import * as Api from 'utils/api'
-import { fromJS } from 'immutable'
+import history from 'historyConfig'
 
 /**
  *
@@ -12,6 +12,7 @@ function* login(user) {
     yield put(AuthenticationActions.loginUserRequest())
     const response = yield call(Api.Authentication.loginUser, user.data)
     yield put(AuthenticationActions.loginUserSuccess(response))
+    history.push('/')
   } catch (error) {
     yield put(AuthenticationActions.loginUserFailure(error))
   }
