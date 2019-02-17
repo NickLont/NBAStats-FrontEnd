@@ -3,9 +3,13 @@ import PropTypes from 'prop-types'
 import { Input, Button } from 'components'
 
 class Index extends Component {
-  static defaultProps = {}
+  static defaultProps = {
+    onLogin: () => {}
+  }
 
-  static propTypes = {}
+  static propTypes = {
+    onLogin: PropTypes.func
+  }
 
   state = {
     username: '',
@@ -18,8 +22,17 @@ class Index extends Component {
       [name]: value
     })
   }
+  onClick = () => {
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.onLogin(user)
+  }
 
   render() {
+    const { username, password } = this.state
+    const isDisabled = password.length < 3 || username.length < 3
     return (
       <>
         <Input
@@ -35,7 +48,12 @@ class Index extends Component {
           type='password'
           onChange={this.onChange}
         />
-        <Button label="Login" isPrimary />
+        <Button
+          label="Login"
+          isPrimary
+          disabled={isDisabled}
+          onClick = {this.onClick}
+        />
       </>
     )
   }

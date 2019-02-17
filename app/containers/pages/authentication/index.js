@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Login, Container, Register, Button } from 'components'
+import { AuthenticationActions } from "actions"
+import { connect } from "react-redux"
 
 class Authentication extends Component {
-  static defaultProps = {}
+  static defaultProps = {
+    loginUser: () => {}
+  }
 
-  static propTypes = {}
+  static propTypes = {
+    loginUser: PropTypes.func
+  }
 
   state = {
     inLogin: true
@@ -22,6 +28,7 @@ class Authentication extends Component {
 
   render() {
     const { inLogin } = this.state
+    const { loginUser } = this.props
     return (
       <Container style="authentication-page">
         <div  className="authentication-page__container">
@@ -31,7 +38,7 @@ class Authentication extends Component {
           </div>
           <div className="authentication-page__container--input">
             {inLogin
-              ? <Login  />
+              ? <Login onLogin={loginUser} />
               : <Register />
             }
           </div>
@@ -41,4 +48,12 @@ class Authentication extends Component {
   }
 }
 
-export default Authentication
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  loginUser: (user) => dispatch(AuthenticationActions.loginUser(user))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Authentication)
