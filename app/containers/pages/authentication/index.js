@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Login, Container, Register, Button } from 'components'
 import { AuthenticationActions } from "actions"
 import { connect } from "react-redux"
+import { UserSelector } from "../../../selectors"
 
 class Authentication extends Component {
   static defaultProps = {
@@ -28,7 +29,8 @@ class Authentication extends Component {
 
   render() {
     const { inLogin } = this.state
-    const { loginUser } = this.props
+    const { loginUser, error } = this.props
+    console.log('error from state: ', error)
     return (
       <Container style="authentication-page">
         <div  className="authentication-page__container">
@@ -38,7 +40,7 @@ class Authentication extends Component {
           </div>
           <div className="authentication-page__container--input">
             {inLogin
-              ? <Login onLogin={loginUser} />
+              ? <Login onLogin={loginUser} error={error} />
               : <Register />
             }
           </div>
@@ -48,7 +50,10 @@ class Authentication extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  error: UserSelector.getUserError(state),
+  loading: UserSelector.getUserLoading(state)
+})
 const mapDispatchToProps = dispatch => ({
   loginUser: (user) => dispatch(AuthenticationActions.loginUser(user))
 })

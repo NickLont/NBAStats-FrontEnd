@@ -4,11 +4,13 @@ import { Input, Button } from 'components'
 
 class Index extends Component {
   static defaultProps = {
-    onLogin: () => {}
+    onLogin: () => {},
+    error: ''
   }
 
   static propTypes = {
-    onLogin: PropTypes.func
+    onLogin: PropTypes.func,
+    error: PropTypes.string
   }
 
   state = {
@@ -32,6 +34,7 @@ class Index extends Component {
 
   render() {
     const { username, password } = this.state
+    const { error, loading } = this.props
     const isDisabled = password.length < 3 || username.length < 3
     return (
       <>
@@ -48,6 +51,9 @@ class Index extends Component {
           type='password'
           onChange={this.onChange}
         />
+        { error &&
+          <p className="error">{this.props.error}</p>
+        }
         <Button
           label="Login"
           isPrimary

@@ -10,9 +10,9 @@ export const getUserLoading = createSelector(
 )
 export const getUserError = createSelector(
   getUserFromStore,
-  (user) => user.get('error')
+  (user) => user.getIn(['result', 'error'])
 )
 export const getUser = createSelector(
   getUserFromStore,
-  (user) => user.get('data')
+  (user) => user.getIn(['result', 'data'])
 )

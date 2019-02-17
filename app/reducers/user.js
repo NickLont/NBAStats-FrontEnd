@@ -15,7 +15,6 @@ const UserReducer = (state = initialState, action) => {
     case 'LOGIN_USER_SUCCESS' :
       return state.set('loading', false).setIn(['result', 'data'], action.data)
     case 'LOGIN_USER_FAILURE' :
-      console.log('action.error: ', action.error)
       return state.set('loading', false).setIn(['result', 'error'], action.error)
     default:
       return state
