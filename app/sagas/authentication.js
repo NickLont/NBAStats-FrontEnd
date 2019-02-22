@@ -12,6 +12,7 @@ function* login(user) {
     yield put(AuthenticationActions.loginUserRequest())
     const response = yield call(Api.Authentication.loginUser, user.data)
     yield put(AuthenticationActions.loginUserSuccess(response, user))
+    window.localStorage.setItem('token', response.data.token)
     yield call(history.push, '/')
   } catch (error) {
     yield put(AuthenticationActions.loginUserFailure(error))
