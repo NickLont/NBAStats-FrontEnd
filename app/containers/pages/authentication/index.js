@@ -30,7 +30,6 @@ class Authentication extends Component {
   render() {
     const { inLogin } = this.state
     const { loginUser, error } = this.props
-    console.log('error from state: ', error)
     return (
       <Container style="authentication-page">
         <div  className="authentication-page__container">

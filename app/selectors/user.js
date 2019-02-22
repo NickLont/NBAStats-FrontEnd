@@ -14,5 +14,5 @@ export const getUserError = createSelector(
 )
 export const getUser = createSelector(
   getUserFromStore,
-  (user) => user.getIn(['result', 'data'])
+  (user) => user.getIn(['result', 'data', 'name'])
 )

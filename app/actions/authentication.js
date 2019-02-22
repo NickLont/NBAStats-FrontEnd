@@ -3,8 +3,9 @@
 const loginUserRequest = () => {
   return { type: 'LOGIN_USER_REQUEST' }
 }
-const loginUserSuccess = (data) => {
-  return { type: 'LOGIN_USER_SUCCESS', data }
+const loginUserSuccess = (data, user) => {
+  const name = user.data.username
+  return { type: 'LOGIN_USER_SUCCESS', data, name }
 }
 const loginUserFailure = (error) => {
   const errorMessage = error.response.data.failed.toString() || error.toString()

@@ -32,7 +32,7 @@ class Homepage extends Component {
   }
 }
 Homepage.propTypes = {
-  user: ImmutablePropTypes.map,
+  user: ImmutablePropTypes.string,
   error: PropTypes.string,
   loading: PropTypes.bool,
   fetchUser: PropTypes.func
