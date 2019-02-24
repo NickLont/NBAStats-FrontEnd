@@ -3,7 +3,6 @@ import Button from "react-bootstrap/lib/Button"
 import { connect } from 'react-redux'
 import { UserActions } from 'actions'
 import { PropTypes } from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import { UserSelector } from 'selectors'
 
 class Homepage extends Component {
@@ -32,7 +31,7 @@ class Homepage extends Component {
   }
 }
 Homepage.propTypes = {
-  user: ImmutablePropTypes.string,
+  user: PropTypes.string,
   error: PropTypes.string,
   loading: PropTypes.bool,
   fetchUser: PropTypes.func
