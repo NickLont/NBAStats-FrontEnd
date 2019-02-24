@@ -4,7 +4,11 @@ const initialState  = Map({
   loading: false,
   result: {
     error: null,
-    data: null
+    data: {
+      success: null,
+      token: window.localStorage.getItem("token:nba-stats") || null,
+      name: window.localStorage.getItem("name:nba-stats")
+    }
   }
 })
 

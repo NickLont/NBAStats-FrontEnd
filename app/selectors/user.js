@@ -16,3 +16,7 @@ export const getUser = createSelector(
   getUserFromStore,
   (user) => user.getIn(['result', 'data', 'name'])
 )
+export const getUserToken = createSelector(
+  getUserFromStore,
+  (user) => user.getIn(['result', 'data', 'token'])
+)

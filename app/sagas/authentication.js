@@ -9,10 +9,12 @@ import history from 'historyConfig'
  */
 function* login(user) {
   try {
+    console.log('user: ', user)
     yield put(AuthenticationActions.loginUserRequest())
     const response = yield call(Api.Authentication.loginUser, user.data)
     yield put(AuthenticationActions.loginUserSuccess(response, user))
     window.localStorage.setItem('token:nba-stats', response.data.token)
+    window.localStorage.setItem('name:nba-stats', user.data.username)
     yield call(history.push, '/player')
   } catch (error) {
     // window.localStorage.removeItem('token')
