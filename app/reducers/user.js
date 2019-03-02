@@ -2,13 +2,11 @@ import { Map } from 'immutable'
 
 const initialState  = Map({
   loading: false,
-  result: {
-    error: null,
-    data: {
-      success: null,
-      token: window.localStorage.getItem("token:nba-stats") || null,
-      name: window.localStorage.getItem("name:nba-stats") || null
-    }
+  error: null,
+  data: {
+    success: null,
+    token: window.localStorage.getItem("token:nba-stats") || null,
+    name: window.localStorage.getItem("name:nba-stats") || null
   }
 })
 
@@ -17,12 +15,12 @@ const UserReducer = (state = initialState, action) => {
     case 'LOGIN_USER_REQUEST' :
       return state.set('loading', true)
         // .setIn(['result', 'data'], null)
-        .setIn(['result', 'error'], null)
+        .setIn(['error'], null)
     case 'LOGIN_USER_SUCCESS' :
-      return state.set('loading', false).setIn(['result', 'data'], { ...action.data.data, name: action.name })
+      return state.set('loading', false).setIn(['data'], { ...action.data.data, name: action.name })
     case 'LOGIN_USER_FAILURE' :
       return state.set('loading', false)
-        .setIn(['result', 'error'], action.error)
+        .setIn(['error'], action.error)
     default:
       return state
   }

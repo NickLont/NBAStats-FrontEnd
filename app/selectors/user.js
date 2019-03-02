@@ -10,13 +10,13 @@ export const getUserLoading = createSelector(
 )
 export const getUserError = createSelector(
   getUserFromStore,
-  (user) => user.getIn(['result', 'error'])
+  (user) => user.getIn(['error'])
 )
 export const getUser = createSelector(
   getUserFromStore,
-  (user) => user.getIn(['result', 'data', 'name'])
+  (user) => user.getIn(['data', 'name'])
 )
 export const getUserToken = createSelector(
   getUserFromStore,
-  (user) => user.getIn(['result', 'data', 'token'])
+  (user) => user.getIn(['data', 'token'])
 )
