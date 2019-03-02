@@ -7,7 +7,7 @@ const initialState  = Map({
     data: {
       success: null,
       token: window.localStorage.getItem("token:nba-stats") || null,
-      name: window.localStorage.getItem("name:nba-stats")
+      name: window.localStorage.getItem("name:nba-stats") || null
     }
   }
 })
@@ -16,12 +16,13 @@ const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_USER_REQUEST' :
       return state.set('loading', true)
-        .setIn(['result', 'data'], null)
+        // .setIn(['result', 'data'], null)
         .setIn(['result', 'error'], null)
     case 'LOGIN_USER_SUCCESS' :
       return state.set('loading', false).setIn(['result', 'data'], { ...action.data.data, name: action.name })
     case 'LOGIN_USER_FAILURE' :
-      return state.set('loading', false).setIn(['result', 'error'], action.error)
+      return state.set('loading', false)
+        .setIn(['result', 'error'], action.error)
     default:
       return state
   }

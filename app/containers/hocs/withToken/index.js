@@ -6,6 +6,7 @@ import { UserSelector } from 'selectors'
 function withToken(WrappedComponent) {
   return class Hoc extends Component {
     render() {
+      console.log('props: ', this.props)
       return <WrappedComponent {...this.props} />
     }
   }
@@ -17,7 +18,7 @@ function withToken(WrappedComponent) {
   // }
 }
 const mapStateToProps = (state) => ({
-  // token: UserSelector.getUserToken(state)
+  token: UserSelector.getUserToken(state)
 })
 export default withToken
-// export default connect (mapStateToProps, null)(withToken)
+// export default connect (mapStateToProps, {})(withToken)
