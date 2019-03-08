@@ -30,7 +30,6 @@ class Authentication extends Component {
   render() {
     const { inLogin } = this.state
     const { loginUser, error } = this.props
-    console.log('token', this.props.token)
 
     return (
       <Container style="authentication-page">
@@ -53,8 +52,7 @@ class Authentication extends Component {
 
 const mapStateToProps = state => ({
   error: UserSelector.getUserError(state),
-  loading: UserSelector.getUserLoading(state),
-  token: UserSelector.getUserToken(state)
+  loading: UserSelector.getUserLoading(state)
 })
 const mapDispatchToProps = dispatch => ({
   loginUser: (user) => dispatch(AuthenticationActions.loginUser(user))

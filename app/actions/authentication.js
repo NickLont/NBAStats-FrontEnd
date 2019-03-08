@@ -8,16 +8,27 @@ const loginUserSuccess = (data, user) => {
   return { type: 'LOGIN_USER_SUCCESS', data, name }
 }
 const loginUserFailure = (error) => {
-  const errorMessage = error.response.data.failed.toString() || error.toString()
-  return { type: 'LOGIN_USER_FAILURE', error: errorMessage }
+  return { type: 'LOGIN_USER_FAILURE', error: error.response.data.failed || JSON.stringify(error) }
 }
 const loginUser = (user) => {
   return { type: 'LOGIN_USER', data: user }
+}
+const logoutUser = () => {
+  return { type: 'LOGOUT_USER' }
+}
+const logoutUserRequest = () => {
+  return { type: 'LOGOUT_USER_REQUEST' }
+}
+const logoutUserSuccess = () => {
+  return { type: 'LOGOUT_USER_SUCCESS' }
 }
 
 export {
   loginUserFailure,
   loginUserRequest,
   loginUserSuccess,
-  loginUser
+  loginUser,
+  logoutUserRequest,
+  logoutUserSuccess,
+  logoutUser
 }

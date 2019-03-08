@@ -9,19 +9,31 @@ import history from 'historyConfig'
  */
 function* login(user) {
   try {
-    console.log('user: ', user)
     yield put(AuthenticationActions.loginUserRequest())
     const response = yield call(Api.Authentication.loginUser, user.data)
+    window.localStorage.setItem('token:nba-stats', response.token)
+    window.localStorage.setItem('name:nba-stats', user.username)
     yield put(AuthenticationActions.loginUserSuccess(response, user))
-    window.localStorage.setItem('token:nba-stats', response.data.token)
-    window.localStorage.setItem('name:nba-stats', user.data.username)
     yield call(history.push, '/player')
   } catch (error) {
-    // window.localStorage.removeItem('token')
+    window.localStorage.removeItem('token:nba-stats')
+    window.localStorage.removeItem('name:nba-stats')
     yield put(AuthenticationActions.loginUserFailure(error))
+  }
+}
+function* logout() {
+  try {
+    yield put(AuthenticationActions.logoutUserRequest())
+    window.localStorage.removeItem('token:nba-stats')
+    window.localStorage.removeItem('name:nba-stats')
+    yield put(AuthenticationActions.logoutUserSuccess())
+    yield call(history.push, '/authentication')
+  }catch (error) {
+    yield null
   }
 }
 
 export function* authenticationSagaWatcher() {
   yield takeLatest("LOGIN_USER", login)
+  yield takeLatest("LOGOUT_USER", logout)
 }

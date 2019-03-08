@@ -14,13 +14,25 @@ const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_USER_REQUEST' :
       return state.set('loading', true)
-        // .setIn(['result', 'data'], null)
         .setIn(['error'], null)
     case 'LOGIN_USER_SUCCESS' :
-      return state.set('loading', false).setIn(['data'], { ...action.data.data, name: action.name })
+      return state.set('loading', false)
+        .setIn(['data'], { ...action.data.data, name: action.name })
     case 'LOGIN_USER_FAILURE' :
       return state.set('loading', false)
         .setIn(['error'], action.error)
+        .setIn(['data', 'success'], null)
+        .setIn(['data', 'token'], null)
+        .setIn(['data', 'name'], null)
+    case 'LOGOUT_USER_REQUEST' :
+      return state.set('loading', true)
+        .setIn(['error'], null)
+    case 'LOGOUT_USER_SUCCESS' :
+      return state.set('loading', false)
+        .setIn(['error'], null)
+        .setIn(['data', 'success'], null)
+        .setIn(['data', 'token'], null)
+        .setIn(['data', 'name'], null)
     default:
       return state
   }
