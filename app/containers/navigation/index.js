@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { AuthenticationActions } from "../../actions"
+import { UserSelector } from "selectors"
+import { PropTypes } from 'prop-types'
 
 class Navbar extends Component {
+  static propTypes = {
+    logoutUser: PropTypes.func
+  }
   render() {
-    const { logoutUser } = this.props
+    const { logoutUser, user } = this.props
     return (
       <nav role="navigation">
         <ul className="navbar">
@@ -34,7 +39,7 @@ class Navbar extends Component {
           >
             <span
               className="navbar__link">
-              Logout
+              Logout {`${user || ''}`}
             </span>
           </li>
         </ul>
@@ -43,8 +48,11 @@ class Navbar extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: UserSelector.getUser(state)
+})
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(AuthenticationActions.logoutUser())
 })
 
-export default connect(() => ({}), mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

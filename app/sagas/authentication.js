@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects"
+import { call, put, takeLatest, select } from "redux-saga/effects"
 import { AuthenticationActions } from 'actions'
 import * as Api from 'utils/api'
 import history from 'historyConfig'
@@ -11,8 +11,8 @@ function* login(user) {
   try {
     yield put(AuthenticationActions.loginUserRequest())
     const response = yield call(Api.Authentication.loginUser, user.data)
-    window.localStorage.setItem('token:nba-stats', response.token)
-    window.localStorage.setItem('name:nba-stats', user.username)
+    window.localStorage.setItem('token:nba-stats', response.data.token)
+    window.localStorage.setItem('name:nba-stats', user.data.username)
     yield put(AuthenticationActions.loginUserSuccess(response, user))
     yield call(history.push, '/player')
   } catch (error) {
